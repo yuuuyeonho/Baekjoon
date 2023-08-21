@@ -1,46 +1,23 @@
-#include <iostream>
-#include <string>
-#include <cctype>
+#include<iostream>
+#include<string>
 using namespace std;
 
-int main()
-{
-	string str;
-	cin >> str;
+int main(){
+    char c[1000005];
+    cin >> c;
+    int cnt[26]={0,};
+    int tmp, max=0;
+    int l = strlen(c);
+    char ans;
+    for(int i = 0; i<l; ++i){
+        if(c[i] < 'A'){tmp = c[i] - 'a'; cnt[tmp]++;}
+        else{tmp = c[i] - 'A'; cnt[tmp]++;}
+    }
+    for(int i = 0; i < 26; ++i){
+        if(cnt[i] > cnt[max]) {max = i; ans = 'A'+max;}
+        else if(cnt[i] == cnt[max]) ans = '?';
+    }
+    cout << ans;
 
-
-	int num[26] = { 0 };
-
-	// 대문자로 변환하고 각 문자의 빈도수 저장
-	for (int i = 0; i < str.length(); i++)
-	{
-		str[i] = toupper(str[i]); //통째로 변환 안됨
-		num[str[i] - 65]++; // 
-	}
-
-	// 가장 많이 등장한 문자
-	int max = 0; // 가장 높은 빈도수
-	int index = -1; // max값의 인덱스
-	for (int i = 0; i < 26; i++)
-	{
-		if (max < num[i])
-		{
-			max = num[i];
-			index = i;
-		}
-	}
-
-	for (int i = 0; i < 26; i++)
-	{
-		if (i == index)
-			continue;
-		if (num[i] == max)
-		{
-			cout << '?';
-			return 0;
-		}
-	}
-
-	cout << (char)(index + 65);
-	return 0;
+    return 0;
 }
