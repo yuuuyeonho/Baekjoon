@@ -3,24 +3,29 @@
 using namespace std;
 
 int n;
-int arr[100001];
-int state[100001];
-vector<int> node[100000];
+int parents[100001]; // 노드의 부모 번호
+int state[100001]; // 이미 확인한 노드인지 구분
+vector<int> node[100001]; // 각 노드에서 연결된 정점을 벡터 배열을 통해 표현
 
+// parents 배열에 부모의 번호를 찾아서 넣는 함수 DFS로 구현
 void getparents(int n) {
     state[n] = 1;
     for(int i=0; i<node[n].size(); ++i) {
-        int tmp = node[n].at(i);
-        if(arr[node[n].at(i)]==0) {
-            arr[node[n].at(i)] = n;
+        int child = node[n].at(i);
+        if(parents[child]==0) {
+            parents[child] = n;
         }
-        if(state[node[n].at(i)] == 0){
-            getparents(tmp);
+        if(state[child] == 0){
+            getparents(child);
         }
     }
 }
 
 int main() {
+    ios_base :: sync_with_stdio(false); 
+    cin.tie(NULL); 
+    cout.tie(NULL);
+
     cin >> n;
     
     int tmp1, tmp2;
@@ -30,19 +35,10 @@ int main() {
         node[tmp2].push_back(tmp1);
     }
 
-    /*
-    for(int i=1; i<=n; ++i){
-        for(int j=0; j<node[i].size(); ++j){
-            cout << node[i].at(j) << ' ';
-        }
-        cout << endl;
-    } 
-    */   
-
     getparents(1);
 
     for(int i=2; i<=n; ++i) {
-        cout << arr[i] << endl;
+        cout << parents[i] << '\n';
     }
 
     return 0;
