@@ -10,6 +10,8 @@ vector<pair<int, int>> vec[1001];
 queue<int> q;
 int dist[1001];
 bool isdistited[1001];
+priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>
+    pq;
 
 bool compareBySecond(const pair<int, int>& a, const pair<int, int>& b) {
   return a.second < b.second;
@@ -37,11 +39,6 @@ int main() {
   dist[start] = 0;
   q.push(start);
 
-  priority_queue<pair<int, int>, vector<pair<int, int>>,
-                 greater<pair<int, int>>>
-      pq;
-  // 우선순위 큐 오름차순 정렬
-  // <비용, 도착 도시>
   pq.push(make_pair(0, start));
   dist[start] = 0;  // 출발 도시 비용 = 0
   while (!pq.empty()) {
