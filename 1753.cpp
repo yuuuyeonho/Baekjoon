@@ -31,17 +31,17 @@ int main() {
   pq.push(make_pair(0, K));
 
   while (!pq.empty()) {
-    int y = pq.top().first;
-    int d = pq.top().second;
+    int cost = pq.top().first;  // 현재 정점까지 거리
+    int cur = pq.top().second;  // 현재 정점
     pq.pop();
 
-    for (int i = 0; i < vec[d].size(); i++) {
-      int x = vec[d][i].first;
-      int W = vec[d][i].second;
+    for (int i = 0; i < vec[cur].size(); i++) {
+      int next = vec[cur][i].first;    // 다음 정점
+      int ncost = vec[cur][i].second;  // 다음 정점까지의 거리
 
-      if (y + W < dist[x]) {
-        dist[x] = y + W;
-        pq.push(make_pair(y + W, x));
+      if (cost + ncost < dist[next]) {
+        dist[next] = cost + ncost;
+        pq.push(make_pair(cost + ncost, next));
       }
     }
   }
