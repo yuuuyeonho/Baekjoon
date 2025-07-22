@@ -2,8 +2,6 @@
 #include <iostream>
 using namespace std;
 
-vector<pair<int, int> > v;  // 거리,인덱스
-
 int main() {
   std::ios_base::sync_with_stdio(false);
   std::cin.tie(NULL);
@@ -14,8 +12,8 @@ int main() {
   for (Test_Case = 1; Test_Case <= t; ++Test_Case) {
     int n;
     cin >> n;
-    int* point = new int[n + 1];
-    int* dist = new int[n - 1];
+    int* point = new int[n];
+    int* dist = new int[n];
     int totalDist = 0;
 
     for (int i = 0; i < n; ++i) {
