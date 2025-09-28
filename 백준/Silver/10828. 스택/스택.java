@@ -31,16 +31,19 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        Scanner in = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
         StringBuilder sb = new StringBuilder();
 
-        int n = in.nextInt();
-        for(int i=0; i<n; ++i){
-            String str = in.next();
-            switch (str){
 
+        int n = Integer.parseInt(br.readLine());
+
+        for(int i=0; i<n; ++i){
+            st = new StringTokenizer(br.readLine());
+            switch (st.nextToken()){
+                
                 case "push":
-                    push(in.nextInt());
+                    push(Integer.parseInt(st.nextToken()));
                     break;
 
                 case "pop":
