@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class Main {
-    static ArrayList<int[]> house;
-    static ArrayList<int[]> chicken;
-    static ArrayList<int[]> picked;
+    static ArrayList<int[]> house = new ArrayList<>();
+    static ArrayList<int[]> chicken = new ArrayList<>();
+    static ArrayList<int[]> picked = new ArrayList<>();
     static int N, M;
     static int result = Integer.MAX_VALUE;
     static boolean[] visited;
